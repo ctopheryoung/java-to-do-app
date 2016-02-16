@@ -18,5 +18,39 @@ public class AppTest extends FluentTest {
   public static ServerRule server = new ServerRule();
 
 
-  //Tests go here
+  @Test
+  public void rootTest() {
+    goTo("http://localhost:4567/");
+    assertThat(pageSource()).contains("To-do list!");
+  }
+
+  @Test
+  public void toDoIsCreatedTest() {
+    goTo("http://localhost:4567/");
+    fill("#description").with("Learn to code");
+    submit(".btn");
+    assertThat(pageSource()).contains("Your task has been saved.");
+  }
+
+  @Test
+  public void toDoIsDisplayedTest() {
+    goTo("http://localhost:4567/");
+    fill("#description").with("Learn to code");
+    submit(".btn");
+    click("a", withText("Go Back"));
+    assertThat(pageSource()).contains("Learn to code");
+  }
+
+  @Test
+    public void multipleToDosAreDisplayedTest() {
+      goTo("http://localhost:4567/");
+      fill("#description").with("Learn to code");
+      submit(".btn");
+      click("a", withText("Go Back"));
+      fill("#description").with("Buy groceries");
+      submit(".btn");
+      click("a", withText("Go Back"));
+      assertThat(pageSource()).contains("Learn to code");
+      assertThat(pageSource()).contains("Buy groceries");
+    }
 }
