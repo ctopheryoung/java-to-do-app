@@ -1,25 +1,12 @@
-# Java/Spark/Velocity File Structure Template
+# To-Do List
 
-#### Date
+#### February 2016
 
-#### By Names
+#### By Chris Young
 
 ## Description
 
-This is a template file structure for use in Epicodus Java/Spark/Velocity projects.
-
-## How To Use
-
-* Make a directory for your project and initialize a git repository.
-* Pull this file structure template from GitHub
-
-OR:
-
-* Fork this repository from GitHub and rename it
-
-## Please Make This Better
-
-Please fork this repository and send a pull request if something in here could be better.
+A To-Do list web app written in Java utilizing Spark and the Velocity Template Engine.
 
 ## Technologies Used
 
