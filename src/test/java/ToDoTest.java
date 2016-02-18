@@ -5,6 +5,9 @@ import static org.junit.Assert.*;
 
 public class ToDoTest {
 
+  @Rule
+  public ClearRule clearRule = new ClearRule();
+
   @Test
   public void toDo_instantiatesCorrectly_true() {
     ToDo myToDo = new ToDo("Learn to code");

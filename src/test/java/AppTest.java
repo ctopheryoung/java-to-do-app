@@ -27,30 +27,41 @@ public class AppTest extends FluentTest {
   @Test
   public void toDoIsCreatedTest() {
     goTo("http://localhost:4567/");
+    click("a", withText("Add a To-Do"));
     fill("#description").with("Learn to code");
     submit(".btn");
-    assertThat(pageSource()).contains("Your task has been saved.");
+    assertThat(pageSource()).contains("Your to-do has been saved.");
   }
 
   @Test
   public void toDoIsDisplayedTest() {
-    goTo("http://localhost:4567/");
+    goTo("http://localhost:4567/todos/new");
     fill("#description").with("Learn to code");
     submit(".btn");
-    click("a", withText("Go Back"));
+    click("a", withText("View to-do list"));
     assertThat(pageSource()).contains("Learn to code");
   }
 
   @Test
     public void multipleToDosAreDisplayedTest() {
-      goTo("http://localhost:4567/");
+      goTo("http://localhost:4567/todos/new");
       fill("#description").with("Learn to code");
       submit(".btn");
-      click("a", withText("Go Back"));
-      fill("#description").with("Buy groceries");
+      goTo("http://localhost:4567/todos/new");
+      fill("#description").with("Walk the dog");
       submit(".btn");
-      click("a", withText("Go Back"));
+      click("a", withText("View to-do list"));
       assertThat(pageSource()).contains("Learn to code");
-      assertThat(pageSource()).contains("Buy groceries");
+      assertThat(pageSource()).contains("Walk the dog");
     }
+
+    @Test
+      public void todoShowPageDisplaysDescription() {
+        goTo("http://localhost:4567/todos/new");
+        fill("#description").with("Walk the dog");
+        submit(".btn");
+        click("a", withText("View to-do list"));
+        click("a", withText("Walk the dog"));
+        assertThat(pageSource()).contains("Walk the dog");
+      }
 }
