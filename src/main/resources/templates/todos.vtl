@@ -1,0 +1,9 @@
+<h1>List of things To Do</h1>
+<ul>
+#foreach ($todo in $todos)
+  <li><a href="/todos/$todo.getId()">$todo.getDescription()</a></li>
+#end
+</ul>
+
+<a class="btn btn-warning" href="/todos/new">Add another To-Do</a>
+<a class="btn btn-success" href="/todos">View to-do list</a>

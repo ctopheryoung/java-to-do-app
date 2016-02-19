@@ -1,0 +1,8 @@
+#if ($todo)
+  <h1>$todo.getDescription()</h1>
+#else
+  <h1>To-do not found.</h1>
+#end
+
+<a class="btn btn-warning" href="/todos/new">Add another To-Do</a>
+<a class="btn btn-success" href="/todos">View to-do list</a>
